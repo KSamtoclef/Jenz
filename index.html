@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#5b21b6">
+  <meta name="description" content="JENZ Community is a campus-first marketplace connecting student buyers, sellers and service providers.">
+  <title>JENZ Community — Campus Marketplace</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <div class="demo-bar">DEMO PREVIEW — Campus marketplace setup</div>
+
+  <header class="site-header">
+    <div class="container header-row">
+      <button class="icon-button mobile-only" id="menuButton" aria-label="Open menu">☰</button>
+      <a href="#home" class="brand" aria-label="JENZ Community home">
+        <span class="brand-mark">J</span>
+        <span>JENZ <strong>Community</strong></span>
+      </a>
+      <form class="search" id="searchForm">
+        <span>⌕</span>
+        <input id="searchInput" type="search" placeholder="Search products, services or sellers" aria-label="Search marketplace">
+        <button type="submit">Search</button>
+      </form>
+      <nav class="header-actions">
+        <button class="plain-button" data-open="authModal">Sign in</button>
+        <button class="icon-button" data-open="cartDrawer" aria-label="Open cart">🛒<span class="badge" id="cartCount">0</span></button>
+      </nav>
+    </div>
+    <div class="container category-strip" aria-label="Popular categories">
+      <button data-category="All" class="active">All</button>
+      <button data-category="Electronics">Electronics</button>
+      <button data-category="Fashion">Fashion</button>
+      <button data-category="Food">Food</button>
+      <button data-category="Beauty">Beauty</button>
+      <button data-category="Books">Books</button>
+      <button data-category="Services">Services</button>
+      <button data-category="Hostel">Hostel essentials</button>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero container">
+      <div class="hero-copy">
+        <span class="eyebrow">Built for students, powered by community</span>
+        <h1>Buy, sell and grow <span>right on campus.</span></h1>
+        <p>Discover trusted student businesses, affordable essentials, food, services and everything you need around school.</p>
+        <div class="hero-actions">
+          <a href="#marketplace" class="primary-button">Explore marketplace</a>
+          <button class="secondary-button" data-open="sellerModal">Start selling</button>
+        </div>
+        <div class="hero-trust">
+          <span>✓ Student-friendly prices</span>
+          <span>✓ Verified sellers</span>
+          <span>✓ Campus pickup</span>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card main-card">
+          <div class="floating-label">Trending today</div>
+          <div class="product-emoji">🎧</div>
+          <h3>Wireless Headphones</h3>
+          <p>Clear sound for lectures and chill time.</p>
+          <div><strong>₦18,500</strong><span>4.8 ★</span></div>
+        </div>
+        <div class="hero-card mini-card top-card"><span>🍱</span><div><strong>Fresh meals</strong><small>From ₦1,800</small></div></div>
+        <div class="hero-card mini-card bottom-card"><span>💻</span><div><strong>Design services</strong><small>Student creators</small></div></div>
+      </div>
+    </section>
+
+    <section class="container stats-grid" aria-label="Marketplace statistics">
+      <article><strong>1,280+</strong><span>Student buyers</span></article>
+      <article><strong>164</strong><span>Campus sellers</span></article>
+      <article><strong>920+</strong><span>Products & services</span></article>
+      <article><strong>4.8/5</strong><span>Community rating</span></article>
+    </section>
+
+    <section class="container quick-categories">
+      <div class="section-heading">
+        <div><span class="eyebrow">Browse quickly</span><h2>What are you looking for?</h2></div>
+      </div>
+      <div class="category-grid">
+        <button data-category="Electronics"><span>📱</span><strong>Electronics</strong><small>Phones, gadgets</small></button>
+        <button data-category="Fashion"><span>👕</span><strong>Fashion</strong><small>Clothing, shoes</small></button>
+        <button data-category="Food"><span>🍛</span><strong>Food</strong><small>Meals, snacks</small></button>
+        <button data-category="Books"><span>📚</span><strong>Books</strong><small>Texts, materials</small></button>
+        <button data-category="Beauty"><span>✨</span><strong>Beauty</strong><small>Skincare, hair</small></button>
+        <button data-category="Services"><span>🛠️</span><strong>Services</strong><small>Design, repairs</small></button>
+      </div>
+    </section>
+
+    <section class="flash-section">
+      <div class="container flash-wrap">
+        <div>
+          <span class="eyebrow light">Campus flash deal</span>
+          <h2>Save up to 35% today</h2>
+          <p>Limited student offers on selected essentials.</p>
+        </div>
+        <div class="countdown" id="countdown"><span>05<small>HRS</small></span><b>:</b><span>24<small>MIN</small></span><b>:</b><span>18<small>SEC</small></span></div>
+        <a href="#marketplace" class="white-button">Shop deals</a>
+      </div>
+    </section>
+
+    <section class="container marketplace" id="marketplace">
+      <div class="section-heading marketplace-heading">
+        <div><span class="eyebrow">Campus picks</span><h2>Popular products and services</h2></div>
+        <div class="filters">
+          <select id="sortSelect" aria-label="Sort products">
+            <option value="popular">Most popular</option>
+            <option value="low">Price: low to high</option>
+            <option value="high">Price: high to low</option>
+            <option value="rating">Highest rated</option>
+          </select>
+        </div>
+      </div>
+      <div class="product-grid" id="productGrid"></div>
+      <div class="center-action"><button class="secondary-button" id="loadMoreButton">Load more</button></div>
+    </section>
+
+    <section class="container seller-banner">
+      <div class="seller-copy">
+        <span class="eyebrow light">Turn your skill into income</span>
+        <h2>Start your student business with JENZ.</h2>
+        <p>List products, receive orders, chat with buyers and grow your campus reputation from one simple dashboard.</p>
+        <button class="white-button" data-open="sellerModal">Open a seller account</button>
+      </div>
+      <div class="seller-dashboard-preview">
+        <div class="preview-top"><span>Seller overview</span><strong>Today</strong></div>
+        <div class="preview-balance"><small>Total earnings</small><strong>₦84,500</strong><span>+18% this week</span></div>
+        <div class="preview-bars"><i style="height:38%"></i><i style="height:55%"></i><i style="height:46%"></i><i style="height:76%"></i><i style="height:92%"></i><i style="height:68%"></i><i style="height:86%"></i></div>
+        <div class="preview-row"><span>New orders</span><strong>12</strong></div>
+        <div class="preview-row"><span>Products listed</span><strong>26</strong></div>
+      </div>
+    </section>
+
+    <section class="container trusted-section">
+      <div class="section-heading">
+        <div><span class="eyebrow">Shop with confidence</span><h2>Trusted student sellers</h2></div>
+        <button class="text-button">View all sellers →</button>
+      </div>
+      <div class="seller-grid" id="sellerGrid"></div>
+    </section>
+
+    <section class="container steps-section">
+      <div class="section-heading centered"><div><span class="eyebrow">Simple and secure</span><h2>How JENZ works</h2></div></div>
+      <div class="steps-grid">
+        <article><span>1</span><div class="step-icon">🔎</div><h3>Discover</h3><p>Search products, services and trusted student sellers.</p></article>
+        <article><span>2</span><div class="step-icon">💬</div><h3>Connect</h3><p>Ask questions, confirm availability and choose delivery.</p></article>
+        <article><span>3</span><div class="step-icon">🛍️</div><h3>Order</h3><p>Add to cart and place an order through the platform.</p></article>
+        <article><span>4</span><div class="step-icon">⭐</div><h3>Review</h3><p>Rate your experience and help the community stay trusted.</p></article>
+      </div>
+    </section>
+
+    <section class="container testimonials">
+      <div class="section-heading centered"><div><span class="eyebrow">Community voices</span><h2>Why students choose JENZ</h2></div></div>
+      <div class="testimonial-grid">
+        <article><div class="stars">★★★★★</div><p>“The layout makes it easy to find affordable items around campus without jumping between random group chats.”</p><div><span class="avatar">AM</span><strong>Amina M.<small>Buyer · Demo profile</small></strong></div></article>
+        <article><div class="stars">★★★★★</div><p>“I can show my products properly, manage orders and build trust with people in my school.”</p><div><span class="avatar">TK</span><strong>Tobi K.<small>Seller · Demo profile</small></strong></div></article>
+        <article><div class="stars">★★★★★</div><p>“The campus pickup option is exactly what students need. It keeps buying simple and practical.”</p><div><span class="avatar">JO</span><strong>Joy O.<small>Buyer · Demo profile</small></strong></div></article>
+      </div>
+    </section>
+
+    <section class="newsletter">
+      <div class="container newsletter-wrap">
+        <div><span class="eyebrow light">Stay in the loop</span><h2>Get campus deals and business opportunities.</h2></div>
+        <form id="newsletterForm"><input type="email" required placeholder="Enter your email address"><button type="submit">Join community</button></form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div><a class="brand footer-brand" href="#home"><span class="brand-mark">J</span><span>JENZ <strong>Community</strong></span></a><p>A student-powered marketplace for buying, selling, learning and growing together.</p></div>
+      <div><h4>Marketplace</h4><a href="#marketplace">Products</a><a href="#marketplace">Services</a><a href="#marketplace">Sellers</a><a href="#marketplace">Campus deals</a></div>
+      <div><h4>Support</h4><a href="#">Help centre</a><a href="#">Report a seller</a><a href="#">Safety tips</a><a href="#">Contact us</a></div>
+      <div><h4>Company</h4><a href="#">About JENZ</a><a href="#">Community impact</a><a href="#">Blog</a><a href="#">Advertise</a></div>
+    </div>
+    <div class="container footer-bottom"><span>© 2026 JENZ Community. Preview version.</span><span>Privacy · Terms · Marketplace rules</span></div>
+  </footer>
+
+  <nav class="mobile-nav">
+    <a href="#home" class="active"><span>⌂</span>Home</a>
+    <a href="#marketplace"><span>▦</span>Shop</a>
+    <button data-open="sellerModal"><span>＋</span>Sell</button>
+    <button data-open="messagesModal"><span>✉</span>Messages</button>
+    <button data-open="authModal"><span>◉</span>Account</button>
+  </nav>
+
+  <div class="drawer" id="cartDrawer" aria-hidden="true">
+    <div class="drawer-overlay" data-close="cartDrawer"></div>
+    <aside>
+      <div class="drawer-header"><div><span class="eyebrow">Your basket</span><h2>Shopping cart</h2></div><button class="icon-button" data-close="cartDrawer">×</button></div>
+      <div id="cartItems" class="cart-items"></div>
+      <div class="cart-empty" id="cartEmpty"><span>🛒</span><h3>Your cart is empty</h3><p>Add products to see them here.</p></div>
+      <div class="cart-summary">
+        <div><span>Subtotal</span><strong id="cartSubtotal">₦0</strong></div>
+        <div><span>Delivery</span><strong>Calculated at checkout</strong></div>
+        <button class="primary-button full" id="checkoutButton">Proceed to checkout</button>
+      </div>
+    </aside>
+  </div>
+
+  <div class="modal" id="authModal" aria-hidden="true">
+    <div class="modal-overlay" data-close="authModal"></div>
+    <div class="modal-card auth-card">
+      <button class="modal-close" data-close="authModal">×</button>
+      <div class="auth-brand"><span class="brand-mark">J</span><h2>Welcome to JENZ</h2><p>Create a student marketplace account or sign in.</p></div>
+      <div class="tab-row"><button class="active" data-auth-tab="signup">Create account</button><button data-auth-tab="login">Sign in</button></div>
+      <form id="authForm">
+        <div id="signupFields"><label>Full name<input required type="text" placeholder="Your full name"></label><label>School or campus<input required type="text" placeholder="e.g. Main Campus"></label></div>
+        <label>Email address<input required type="email" placeholder="you@example.com"></label>
+        <label>Password<input required type="password" minlength="6" placeholder="Minimum 6 characters"></label>
+        <button type="submit" class="primary-button full">Continue</button>
+        <small>Preview only. Real authentication will be connected with Supabase later.</small>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal" id="sellerModal" aria-hidden="true">
+    <div class="modal-overlay" data-close="sellerModal"></div>
+    <div class="modal-card wide-card">
+      <button class="modal-close" data-close="sellerModal">×</button>
+      <span class="eyebrow">Seller onboarding</span><h2>Start selling on campus</h2><p class="modal-lead">Create your storefront, list products and build a trusted student business.</p>
+      <form id="sellerForm" class="form-grid">
+        <label>Business name<input required placeholder="e.g. Kemi's Closet"></label>
+        <label>Business category<select required><option value="">Choose category</option><option>Fashion</option><option>Food</option><option>Electronics</option><option>Beauty</option><option>Books</option><option>Services</option></select></label>
+        <label>Campus location<input required placeholder="Hostel, faculty or area"></label>
+        <label>Phone number<input required type="tel" placeholder="0800 000 0000"></label>
+        <label class="full-field">What do you sell?<textarea required placeholder="Tell buyers about your products or services"></textarea></label>
+        <div class="verification-note full-field"><span>🛡️</span><div><strong>Seller verification</strong><p>ID and student-status verification will be added when the backend is connected.</p></div></div>
+        <button class="primary-button full-field" type="submit">Create seller preview</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal" id="messagesModal" aria-hidden="true">
+    <div class="modal-overlay" data-close="messagesModal"></div>
+    <div class="modal-card wide-card messages-card">
+      <button class="modal-close" data-close="messagesModal">×</button>
+      <div class="messages-layout">
+        <aside class="conversation-list"><h3>Messages</h3><button class="active"><span class="avatar">KC</span><div><strong>Kemi's Closet</strong><small>Yes, pickup is available.</small></div></button><button><span class="avatar">BT</span><div><strong>ByteTech Hub</strong><small>The charger is original.</small></div></button></aside>
+        <section class="chat-panel"><div class="chat-header"><span class="avatar">KC</span><div><strong>Kemi's Closet</strong><small>Usually replies in minutes</small></div></div><div class="chat-body"><p class="received">Hi! The tote bag is still available.</p><p class="sent">Great. Can I pick it up tomorrow?</p><p class="received">Yes, pickup is available from 11am.</p></div><form id="messageForm"><input placeholder="Type a message"><button>Send</button></form></section>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="checkoutModal" aria-hidden="true">
+    <div class="modal-overlay" data-close="checkoutModal"></div>
+    <div class="modal-card wide-card">
+      <button class="modal-close" data-close="checkoutModal">×</button>
+      <span class="eyebrow">Checkout preview</span><h2>Complete your order</h2>
+      <div class="checkout-grid">
+        <form id="checkoutForm">
+          <label>Full name<input required placeholder="Your full name"></label>
+          <label>Phone number<input required type="tel" placeholder="0800 000 0000"></label>
+          <label>Delivery option<select><option>Campus pickup</option><option>Seller delivery</option><option>Campus dispatch</option></select></label>
+          <label>Location or pickup point<input required placeholder="Hostel, faculty or landmark"></label>
+          <label>Payment method<select><option>Pay on pickup</option><option disabled>Paystack — coming later</option><option disabled>JENZ Wallet — coming later</option></select></label>
+          <button class="primary-button full" type="submit">Place demo order</button>
+        </form>
+        <div class="checkout-summary"><h3>Order summary</h3><div id="checkoutItems"></div><div class="summary-total"><span>Total</span><strong id="checkoutTotal">₦0</strong></div><p>Online payment will be connected later through Paystack or Flutterwave.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status"></div>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
